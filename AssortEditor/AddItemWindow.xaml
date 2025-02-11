@@ -1,0 +1,111 @@
+﻿<Window x:Class="AssortEditor.AddItemWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Add Item" Height="600" Width="800" Background="{DynamicResource WindowBackgroundBrush}">
+    <Grid Margin="10">
+        <!-- Define Columns -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/> <!-- Left column for settings -->
+            <ColumnDefinition Width="1*"/> <!-- Right column for barter -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Left Column: Item Settings -->
+        <StackPanel Grid.Column="0" Margin="10">
+            <TextBlock Text="Item _tpl:"/>
+            <TextBox x:Name="ItemTplTextBox" Width="300" HorizontalAlignment="Left" Margin="0,5"/>
+
+            <TextBlock Text="Item Properties (upd):" Margin="10,0"/>
+            <StackPanel Orientation="Vertical" Margin="0,5">
+                <CheckBox x:Name="UnlimitedCountCheckBox" Content="Unlimited Count" Margin="0,5"/>
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock Text="Stack Objects Count:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="StackObjectsCountTextBox" Width="100" Margin="10,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock Text="Buy Restriction Max:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="BuyRestrictionMaxTextBox" Width="100" Margin="10,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock Text="Buy Restriction Current:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="BuyRestrictionCurrentTextBox" Width="100" Margin="10,0"/>
+                </StackPanel>
+
+                <Expander Header="Repairable (Weapons/Armor Only)" Margin="0,10">
+                    <StackPanel Margin="10,0">
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="Durability:" VerticalAlignment="Center"/>
+                            <TextBox x:Name="DurabilityTextBox" Width="100" Margin="10,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="Max Durability:" VerticalAlignment="Center"/>
+                            <TextBox x:Name="MaxDurabilityTextBox" Width="100" Margin="10,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+
+                <Expander Header="Firemode and Foldable (Weapons Only)" Margin="0,10">
+                    <StackPanel Margin="10,0">
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="FireMode:" VerticalAlignment="Center"/>
+                            <TextBox x:Name="FireModeTextBox" Width="100" Margin="10,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Text="Foldable:" VerticalAlignment="Center"/>
+                            <CheckBox x:Name="FoldableCheckBox" Width="100" Margin="10,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <StackPanel.Style>
+                                <Style TargetType="StackPanel">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsChecked, ElementName=FoldableCheckBox}" Value="True">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </StackPanel.Style>
+                            <TextBlock Text="Folded:" VerticalAlignment="Center"/>
+                            <CheckBox x:Name="FoldedCheckBox" Width="100" Margin="10,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Right Column: Barter Section -->
+        <StackPanel Grid.Column="1" Margin="10">
+            <TextBlock Text="Add Barter:" Margin="10,0"/>
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <TextBox x:Name="BarterTplTextBox" Width="150" Text="default_item_id" Margin="0,0,10,0"/>
+            </StackPanel>
+            <TextBlock Text="Count:" Margin="10,0"/>
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <TextBox x:Name="BarterCountTextBox" Width="100" Text="500"/>
+            </StackPanel>
+            <Button Content="Add Barter" HorizontalAlignment="Left" Width="100" Click="AddBarterButton_Click" Margin="0,10"/>
+
+            <TextBlock Text="Barters:"/>
+            <ListView x:Name="BarterListView" Margin="0,10" Height="300">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Barter _tpl" DisplayMemberBinding="{Binding _tpl}" Width="150"/>
+                        <GridViewColumn Header="Count" DisplayMemberBinding="{Binding Count}" Width="100"/>
+                    </GridView>
+                </ListView.View>
+                <ListView.ContextMenu>
+                    <ContextMenu x:Name="BarterContextMenu">
+                        <MenuItem Header="Edit Barter" Click="EditBarter_Click"/>
+                        <MenuItem Header="Remove Barter" Click="RemoveBarter_Click"/>
+                    </ContextMenu>
+                </ListView.ContextMenu>
+            </ListView>
+        </StackPanel>
+
+        <!-- OK/Cancel Buttons at the Bottom -->
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,10" Grid.Row="3">
+            <Button Content="OK" Width="75" Margin="5" Click="OkButton_Click"/>
+            <Button Content="Cancel" Width="75" Margin="5" Click="CancelButton_Click"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

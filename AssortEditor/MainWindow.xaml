@@ -1,0 +1,171 @@
+﻿<Window x:Class="AssortEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Assort Editor" Height="450" Width="800" Background="{DynamicResource WindowBackgroundBrush}">
+    <Grid>
+        <!-- Column Definitions -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Left Panel: Buttons and Image -->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            
+            <StackPanel Margin="10">
+                <ToggleButton Content="Dark/Light Mode" Margin="0,5" HorizontalAlignment="Stretch" 
+                              Name="DarkModeToggleButton" 
+                              Checked="DarkModeToggleButton_Checked" 
+                              Unchecked="DarkModeToggleButton_Unchecked" />
+                <Button Content="Load Assort" Margin="0,5" HorizontalAlignment="Stretch" Name="LoadAssortButton" Click="LoadAssortButton_Click" />
+                <Button Content="Save Assort" Margin="0,5" HorizontalAlignment="Stretch" Name="SaveAssortButton" Click="SaveAssortButton_Click" />
+                <Button Content="Add Item" Margin="0,5" HorizontalAlignment="Stretch" Name="AddItemButton" Click="AddItemButton_Click" />
+            </StackPanel>
+            <Image x:Name="LogoImage" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" />
+
+        </Grid>
+        <!-- Right Panel: TabControl -->
+        <TabControl x:Name="TabControl" Grid.Column="1" Margin="10">
+            <TabItem Header="Loyalty Level 1">
+                <TreeView ItemsSource="{Binding LoyaltyLevel1Items}">
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="_id: " />
+                                    <TextBlock Text="{Binding _id}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="_tpl: " />
+                                    <TextBlock Text="{Binding _tpl}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="parentid: " />
+                                    <TextBlock Text="{Binding parentid}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="slotid: " />
+                                    <TextBlock Text="{Binding slotid}" />
+                                </StackPanel>
+                                <StackPanel.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Edit Item" Click="EditItem_ContextMenu_Click" />
+                                        <MenuItem Header="Add Child Item" Click="AddChildItem_ContextMenu_Click" />
+                                        <MenuItem Header="Remove Item" Click="RemoveItem_ContextMenu_Click" />
+                                    </ContextMenu>
+                                </StackPanel.ContextMenu>
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </TabItem>
+
+            <TabItem Header="Loyalty Level 2">
+                <TreeView ItemsSource="{Binding LoyaltyLevel2Items}">
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="_id: " />
+                                    <TextBlock Text="{Binding _id}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="_tpl: " />
+                                    <TextBlock Text="{Binding _tpl}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="parentid: " />
+                                    <TextBlock Text="{Binding parentid}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="slotid: " />
+                                    <TextBlock Text="{Binding slotid}" />
+                                </StackPanel>
+                                <StackPanel.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Edit Item" Click="EditItem_ContextMenu_Click" />
+                                        <MenuItem Header="Add Child Item" Click="AddChildItem_ContextMenu_Click" />
+                                        <MenuItem Header="Remove Item" Click="RemoveItem_ContextMenu_Click" />
+                                    </ContextMenu>
+                                </StackPanel.ContextMenu>
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </TabItem>
+
+            <TabItem Header="Loyalty Level 3">
+                <TreeView ItemsSource="{Binding LoyaltyLevel3Items}">
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="_id: " />
+                                    <TextBlock Text="{Binding _id}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="_tpl: " />
+                                    <TextBlock Text="{Binding _tpl}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="parentid: " />
+                                    <TextBlock Text="{Binding parentid}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="slotid: " />
+                                    <TextBlock Text="{Binding slotid}" />
+                                </StackPanel>
+                                <StackPanel.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Edit Item" Click="EditItem_ContextMenu_Click" />
+                                        <MenuItem Header="Add Child Item" Click="AddChildItem_ContextMenu_Click" />
+                                        <MenuItem Header="Remove Item" Click="RemoveItem_ContextMenu_Click" />
+                                    </ContextMenu>
+                                </StackPanel.ContextMenu>
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </TabItem>
+
+            <TabItem Header="Loyalty Level 4">
+                <TreeView ItemsSource="{Binding LoyaltyLevel4Items}">
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="_id: " />
+                                    <TextBlock Text="{Binding _id}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="_tpl: " />
+                                    <TextBlock Text="{Binding _tpl}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="parentid: " />
+                                    <TextBlock Text="{Binding parentid}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontWeight="Bold" Text="slotid: " />
+                                    <TextBlock Text="{Binding slotid}" />
+                                </StackPanel>
+                                <StackPanel.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Edit Item" Click="EditItem_ContextMenu_Click" />
+                                        <MenuItem Header="Add Child Item" Click="AddChildItem_ContextMenu_Click" />
+                                        <MenuItem Header="Remove Item" Click="RemoveItem_ContextMenu_Click" />
+                                    </ContextMenu>
+                                </StackPanel.ContextMenu>
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

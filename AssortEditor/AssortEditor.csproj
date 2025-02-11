@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+        <PublishSingleFile>true</PublishSingleFile>
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="DogtagBarterInputs.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Remove="LightTheme.xaml" />
+      <Resource Include="LightTheme.xaml" />
+      <Page Remove="DarkTheme.xaml" />
+      <Resource Include="DarkTheme.xaml" />
+      <None Remove="Images\WTT_LOGO_BLACK.png" />
+      <Resource Include="Images\WTT_LOGO_BLACK.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Images\WTT_LOGO_WHITE.png" />
+      <Resource Include="Images\WTT_LOGO_WHITE.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,19 @@
+﻿<Window x:Class="AssortEditor.EditBarterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Edit Barter" Height="200" Width="300" Background="{DynamicResource WindowBackgroundBrush}">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBlock Text="Barter _tpl:"/>
+            <TextBox x:Name="BarterTplTextBox" Width="250" Margin="0,5"/>
+
+            <TextBlock Text="Count:"/>
+            <TextBox x:Name="BarterCountTextBox" Width="250" Margin="0,5"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10">
+                <Button Content="Save" Width="75" Margin="5" Click="SaveButton_Click"/>
+                <Button Content="Cancel" Width="75" Margin="5" Click="CancelButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
